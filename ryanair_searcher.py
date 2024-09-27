@@ -57,17 +57,21 @@ def sort_results(results, sort_by: SortBy):
     return sorted(results, key=lambda result: getattr(result, sort_by.value))
 
 # Airport codes:
+#   LJU: Ljubljana Airport
 #   TSF: Treviso Airport
 #   VCE: Marco polo Airport
 #   ZAG: Zagreb Airport
+#   RJK: Rijeka Airport
+#   TRS: Trieste Airport
 #   VIE: Vienna Airport
+#   BUD: Budapest Airport
 if __name__ == "__main__":
 
     # ----------------------------------------------
     # Settings for the search
     # ----------------------------------------------
     departure_airports = ["TSF", "VCE", "ZAG"]
-    arrival_airports = [""]
+    arrival_airports = ["MAD", "VLC"]
     passenger_count = 1
     outbound_date_from = "2024-09-30"
     outbound_date_to = "2024-10-08"
