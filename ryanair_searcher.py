@@ -70,8 +70,8 @@ if __name__ == "__main__":
     # ----------------------------------------------
     # Settings for the search
     # ----------------------------------------------
-    departure_airports = ["TSF", "VCE", "ZAG"]
-    arrival_airports = ["MAD", "VLC"]
+    departure_airports = ["TSF", "VCE", "ZAG", "RJK", "TRS"]
+    arrival_airports = [""]
     passenger_count = 1
     outbound_date_from = "2024-09-30"
     outbound_date_to = "2024-10-08"
@@ -79,7 +79,7 @@ if __name__ == "__main__":
     inbound_date_to = "2024-10-19"
     duration_from = 7
     duration_to = 10
-    max_roundtrip_price = 100
+    max_roundtrip_price = 40
     sort_by = SortBy.PRICE
     # ----------------------------------------------
 
