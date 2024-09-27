@@ -2,8 +2,9 @@ import requests
 from enum import Enum
 
 def get_round_trip_fares(departure_airport, arrival_airport, adult_pax_count,
-                         outbound_date_from, outbound_date_to,
-                         inbound_date_from, inbound_date_to, duration_from, duration_to):
+                         outbound_date_from, outbound_date_to, outbound_time_from,
+                         inbound_date_from, inbound_date_to, inbound_time_from,
+                         duration_from, duration_to):
     url = "https://www.ryanair.com/api/farfnd/v4/roundTripFares"
     
     params = {
@@ -19,6 +20,12 @@ def get_round_trip_fares(departure_airport, arrival_airport, adult_pax_count,
 
     if arrival_airport != "":
         params["arrivalAirportIataCode"] = arrival_airport
+    
+    if outbound_time_from != "":
+        params["outboundDepartureTimeFrom"] = outbound_time_from
+    
+    if inbound_time_from != "":
+        params["inboundDepartureTimeFrom"] = inbound_time_from
     
     # Make the request
     response = requests.get(url, params=params)
@@ -75,8 +82,11 @@ if __name__ == "__main__":
     passenger_count = 2
     outbound_date_from = "2024-11-15"
     outbound_date_to = ""
+    outbound_time_from = "00:00"
     inbound_date_from = "2024-11-17"
     inbound_date_to = ""
+    inbound_time_from = "00:00"
+    
     duration_from = 0
     duration_to = 10
     max_roundtrip_price = 60
@@ -108,8 +118,10 @@ if __name__ == "__main__":
                 adult_pax_count=passenger_count,
                 outbound_date_from=outbound_date_from,
                 outbound_date_to=outbound_date_to,
+                outbound_time_from=outbound_time_from,
                 inbound_date_from=inbound_date_from,
                 inbound_date_to=inbound_date_to,
+                inbound_time_from=inbound_time_from,
                 duration_from=duration_from,
                 duration_to=duration_to
             )
