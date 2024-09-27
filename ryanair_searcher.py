@@ -72,14 +72,14 @@ if __name__ == "__main__":
     # ----------------------------------------------
     departure_airports = ["TSF", "VCE", "ZAG", "RJK", "TRS"]
     arrival_airports = [""]
-    passenger_count = 1
-    outbound_date_from = "2024-09-30"
-    outbound_date_to = "2024-10-08"
-    inbound_date_from = "2024-10-12"
-    inbound_date_to = "2024-10-19"
-    duration_from = 7
+    passenger_count = 2
+    outbound_date_from = "2024-11-15"
+    outbound_date_to = ""
+    inbound_date_from = "2024-11-17"
+    inbound_date_to = ""
+    duration_from = 0
     duration_to = 10
-    max_roundtrip_price = 40
+    max_roundtrip_price = 60
     sort_by = SortBy.PRICE
     # ----------------------------------------------
 
@@ -91,6 +91,12 @@ if __name__ == "__main__":
     
     if len(arrival_airports) == 0:
         arrival_airports = [""]
+    
+    if outbound_date_to == "":
+        outbound_date_to = outbound_date_from
+    
+    if inbound_date_to == "":
+        inbound_date_to = inbound_date_from
     
     print("Finding the cheapest round-trip flights...")   
 
@@ -109,7 +115,7 @@ if __name__ == "__main__":
             )
 
             for res in result["fares"]:
-                price = res["summary"]["price"]["value"]
+                price = res["summary"]["price"]["value"] / passenger_count
 
                 if price > max_roundtrip_price:
                     continue
